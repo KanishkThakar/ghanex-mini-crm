@@ -1,0 +1,24 @@
+{
+  "name": "mini-crm",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mini CRM for managing leads and customer enquiries",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "dev": "concurrently -n api,web -c blue,magenta \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "node --watch server/src/index.js",
+    "dev:web": "npm --prefix client run dev",
+    "build": "npm --prefix client install && npm --prefix client run build",
+    "start": "node server/src/index.js",
+    "test": "node --test server/test"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.5.0",
+    "express": "^4.21.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
